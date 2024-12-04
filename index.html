@@ -11,7 +11,7 @@
             background-color: #f5f5f5;
             text-align: center;
             padding: 50px;
-            overflow: hidden; /* Hide overflowing bubbles */
+            overflow: hidden;
         }
 
         h1 {
@@ -24,6 +24,7 @@
             position: relative;
             height: 400px;
             margin-top: 50px;
+            width: 100%;
         }
 
         .bubble {
@@ -36,49 +37,7 @@
             text-decoration: none;
             opacity: 0.8;
             cursor: pointer;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        /* Fixed bubble positions */
-        .bubble:nth-child(1) {
-            left: 10%;
-            top: 10%;
-            animation-duration: 6s;
-        }
-        .bubble:nth-child(2) {
-            left: 35%;
-            top: 20%;
-            animation-duration: 7s;
-        }
-        .bubble:nth-child(3) {
-            left: 60%;
-            top: 15%;
-            animation-duration: 8s;
-        }
-        .bubble:nth-child(4) {
-            left: 20%;
-            top: 50%;
-            animation-duration: 9s;
-        }
-        .bubble:nth-child(5) {
-            left: 50%;
-            top: 65%;
-            animation-duration: 10s;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0) rotate(0);
-                opacity: 0.8;
-            }
-            50% {
-                transform: translateY(-30px) rotate(180deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(0) rotate(360deg);
-                opacity: 0.8;
-            }
+            transition: transform 0.3s ease-in-out;
         }
 
         /* Bubble hover effect */
@@ -99,6 +58,27 @@
         <a href="reasons.html" class="bubble">Reasons</a>
         <a href="interactive-apology.html" class="bubble">Interactive Apology</a>
     </div>
+
+    <script>
+        // Get all the bubbles
+        const bubbles = document.querySelectorAll('.bubble');
+
+        // Add event listener for mousemove on the document
+        document.addEventListener('mousemove', function(event) {
+            // Get the current mouse position
+            const mouseX = event.clientX;
+            const mouseY = event.clientY;
+
+            // Move each bubble towards the mouse with a slight offset
+            bubbles.forEach((bubble, index) => {
+                const offsetX = (index + 1) * 30; // Adjust this to control distance
+                const offsetY = (index + 1) * 30; // Adjust this to control distance
+
+                // Apply a transform to move the bubble based on the cursor position
+                bubble.style.transform = `translate(${mouseX + offsetX}px, ${mouseY + offsetY}px)`;
+            });
+        });
+    </script>
 
 </body>
 </html>
