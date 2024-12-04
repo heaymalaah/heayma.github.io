@@ -4,31 +4,93 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apology to Mads</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            text-align: center;
+            padding: 50px;
+            overflow: hidden; /* Hide overflowing bubbles */
+        }
+
+        h1 {
+            color: #0066cc;
+            font-size: 3em;
+            margin-bottom: 30px;
+        }
+
+        .bubble-container {
+            position: relative;
+            height: 400px;
+            margin-top: 50px;
+        }
+
+        .bubble {
+            position: absolute;
+            padding: 15px 30px;
+            background-color: #0066cc;
+            color: white;
+            border-radius: 50%;
+            font-size: 1.2em;
+            text-decoration: none;
+            opacity: 0.8;
+            cursor: pointer;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Different bubble sizes */
+        .bubble:nth-child(1) {
+            animation-duration: 5s;
+        }
+        .bubble:nth-child(2) {
+            animation-duration: 6s;
+        }
+        .bubble:nth-child(3) {
+            animation-duration: 7s;
+        }
+        .bubble:nth-child(4) {
+            animation-duration: 8s;
+        }
+        .bubble:nth-child(5) {
+            animation-duration: 9s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0);
+                opacity: 0.8;
+            }
+            50% {
+                transform: translateY(-50px) rotate(180deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(0) rotate(360deg);
+                opacity: 0.8;
+            }
+        }
+
+        /* Bubble hover effect */
+        .bubble:hover {
+            background-color: #004b99;
+        }
+
+    </style>
 </head>
 <body>
-    <div class="content">
-        <h1>I'm Sorry, Mads</h1>
-        <p>Hey Mads, I know we've had our rough moments lately, but I want you to know how much you mean to me.</p>
-        <p>Things may not be perfect right now, but I'm doing my best to work through my emotions and become a better partner.</p>
-        <p>I'm here for you and no matter what, I want to make things right.</p>
+    <h1>I'm Sorry, Mads</h1>
+    <p>I know we've had our rough moments, but I want to make things right. Here are some pages that express my feelings and apologies:</p>
 
-        <!-- Buttons linking to other pages -->
-        <a href="future.html" class="button">Our Future</a>
-        <a href="message.html" class="button">A Special Message</a>
-        <a href="promise.html" class="button">My Promise to You</a>
-        <a href="reasons.html" class="button">Reasons I Love You</a>
-        <a href="interactive-apology.html" class="button">Interactive Apology</a>
-
-        <!-- Button to trigger the "I Love You" message -->
-        <a href="#" class="button">I Love You</a>
+    <div class="bubble-container">
+        <a href="future.html" class="bubble">Future</a>
+        <a href="message.html" class="bubble">Message</a>
+        <a href="promise.html" class="bubble">Promise</a>
+        <a href="reasons.html" class="bubble">Reasons</a>
+        <a href="interactive-apology.html" class="bubble">Apology</a>
     </div>
 
-    <script>
-        document.querySelector('.button').addEventListener('click', function() {
-            alert('Thank you for understanding, Mads! I love you.');
-        });
-    </script>
 </body>
 </html>
+
 
