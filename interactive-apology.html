@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Apology</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            text-align: center;
+            padding: 50px;
+        }
+        .button {
+            background-color: #0066cc;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #004b99;
+        }
+    </style>
+</head>
+<body>
+    <h2>Click Through My Apology</h2>
+    <p>Each click reveals a new message to express how much you mean to me. I hope you'll understand how deeply sorry I am.</p>
+    <button class="button" onclick="nextMessage()">Click Me</button>
+    <p id="message"></p>
+
+    <script>
+        let step = 0;
+        const messages = [
+            "Mads, I'm so sorry for the hurt I've caused.",
+            "I know I made mistakes and I regret them.",
+            "You're the most important person in my life and I want to make things right.",
+            "I promise to learn from this and do better in the future.",
+            "Thank you for your patience and understanding. I love you, big Dino."
+        ];
+
+        function nextMessage() {
+            if (step < messages.length) {
+                document.getElementById('message').innerText = messages[step];
+                step++;
+            } else {
+                document.getElementById('message').innerText = "Thank you for understanding, Mads. I love you!";
+            }
+        }
+    </script>
+</body>
+</html>
