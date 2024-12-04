@@ -21,52 +21,52 @@
             margin-bottom: 30px;
         }
 
+        /* Bubble Container to align the bubbles in a row */
+        .bubble-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px; /* Space between bubbles */
+            margin-top: 50px;
+        }
+
+        /* Bubble Styles */
         .bubble {
-            position: absolute;
             padding: 15px 30px;
             border-radius: 50%;
-            font-size: 1.2em;
+            font-size: 1.5em;
             text-decoration: none;
             color: white;
             cursor: pointer;
-            opacity: 0.8;
+            opacity: 0.9;
             text-align: center;
+            transition: transform 0.2s;
         }
 
-        /* Bubble Positions and Colors (Moved down) */
+        /* Different bubble colors */
         .bubble:nth-child(1) {
-            top: 300px; /* Moved lower */
-            left: 50px;
-            background-color: #ff7f7f;
+            background-color: #ff7f7f; /* Red */
         }
 
         .bubble:nth-child(2) {
-            top: 400px; /* Moved lower */
-            left: 250px;
-            background-color: #ffbb33;
+            background-color: #ffbb33; /* Orange */
         }
 
         .bubble:nth-child(3) {
-            top: 500px; /* Moved lower */
-            left: 500px;
-            background-color: #66cc66;
+            background-color: #66cc66; /* Green */
         }
 
         .bubble:nth-child(4) {
-            top: 600px; /* Moved lower */
-            left: 700px;
-            background-color: #3399ff;
+            background-color: #3399ff; /* Blue */
         }
 
         .bubble:nth-child(5) {
-            top: 700px; /* Moved lower */
-            left: 900px;
-            background-color: #9966cc;
+            background-color: #9966cc; /* Purple */
         }
 
         /* Bubble hover effect */
         .bubble:hover {
             background-color: #004b99;
+            transform: translateY(-5px); /* Slightly lift the bubble */
         }
 
     </style>
@@ -75,15 +75,18 @@
     <h1>I'm Sorry, Mads</h1>
     <p>I know we've had our rough moments, but I want to make things right. Here are some pages that express my feelings and apologies:</p>
 
-    <!-- Static Bubbles with Links -->
-    <a href="future.html" class="bubble">Future</a>
-    <a href="message.html" class="bubble">Message</a>
-    <a href="promise.html" class="bubble">Promise</a>
-    <a href="reasons.html" class="bubble">Reasons</a>
-    <a href="interactive-apology.html" class="bubble">Interactive Apology</a>
+    <!-- Bubble Container with all the page options in a row -->
+    <div class="bubble-container">
+        <a href="future.html" class="bubble">Future</a>
+        <a href="message.html" class="bubble">Message</a>
+        <a href="promise.html" class="bubble">Promise</a>
+        <a href="reasons.html" class="bubble">Reasons</a>
+        <a href="interactive-apology.html" class="bubble">Interactive Apology</a>
+    </div>
 
 </body>
 </html>
+
 
 
 
