@@ -11,7 +11,8 @@
             background-color: #f5f5f5;
             text-align: center;
             padding: 50px;
-            overflow: hidden;
+            position: relative;
+            height: 100vh;
         }
 
         h1 {
@@ -20,24 +21,47 @@
             margin-bottom: 30px;
         }
 
-        .bubble-container {
-            position: relative;
-            height: 400px;
-            margin-top: 50px;
-            width: 100%;
-        }
-
         .bubble {
             position: absolute;
             padding: 15px 30px;
-            background-color: #0066cc;
-            color: white;
             border-radius: 50%;
             font-size: 1.2em;
             text-decoration: none;
-            opacity: 0.8;
+            color: white;
             cursor: pointer;
-            transition: transform 0.3s ease-in-out;
+            opacity: 0.8;
+            text-align: center;
+        }
+
+        /* Bubble Positions and Colors */
+        .bubble:nth-child(1) {
+            top: 100px;
+            left: 50px;
+            background-color: #ff7f7f;
+        }
+
+        .bubble:nth-child(2) {
+            top: 200px;
+            left: 250px;
+            background-color: #ffbb33;
+        }
+
+        .bubble:nth-child(3) {
+            top: 350px;
+            left: 500px;
+            background-color: #66cc66;
+        }
+
+        .bubble:nth-child(4) {
+            top: 150px;
+            left: 700px;
+            background-color: #3399ff;
+        }
+
+        .bubble:nth-child(5) {
+            top: 300px;
+            left: 900px;
+            background-color: #9966cc;
         }
 
         /* Bubble hover effect */
@@ -51,37 +75,16 @@
     <h1>I'm Sorry, Mads</h1>
     <p>I know we've had our rough moments, but I want to make things right. Here are some pages that express my feelings and apologies:</p>
 
-    <div class="bubble-container">
-        <a href="future.html" class="bubble">Future</a>
-        <a href="message.html" class="bubble">Message</a>
-        <a href="promise.html" class="bubble">Promise</a>
-        <a href="reasons.html" class="bubble">Reasons</a>
-        <a href="interactive-apology.html" class="bubble">Interactive Apology</a>
-    </div>
-
-    <script>
-        // Get all the bubbles
-        const bubbles = document.querySelectorAll('.bubble');
-
-        // Add event listener for mousemove on the document
-        document.addEventListener('mousemove', function(event) {
-            // Get the current mouse position
-            const mouseX = event.clientX;
-            const mouseY = event.clientY;
-
-            // Move each bubble towards the mouse with a slight offset
-            bubbles.forEach((bubble, index) => {
-                const offsetX = (index + 1) * 30; // Adjust this to control distance
-                const offsetY = (index + 1) * 30; // Adjust this to control distance
-
-                // Apply a transform to move the bubble based on the cursor position
-                bubble.style.transform = `translate(${mouseX + offsetX}px, ${mouseY + offsetY}px)`;
-            });
-        });
-    </script>
+    <!-- Static Bubbles with Links -->
+    <a href="future.html" class="bubble">Future</a>
+    <a href="message.html" class="bubble">Message</a>
+    <a href="promise.html" class="bubble">Promise</a>
+    <a href="reasons.html" class="bubble">Reasons</a>
+    <a href="interactive-apology.html" class="bubble">Interactive Apology</a>
 
 </body>
 </html>
+
 
 
 
