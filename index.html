@@ -44,40 +44,54 @@
         }
 
         #game {
-            margin: 50px auto;
-            width: 600px;
-            height: 150px;
-            background-color: #eee;
             position: relative;
-            overflow: hidden;
+            width: 600px;
+            height: 200px;
+            background-color: #e0e0e0;
+            margin: 50px auto;
+            border: 2px solid #000;
         }
 
         .dino {
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             background-color: #0066cc;
             position: absolute;
             bottom: 0;
             left: 50px;
+            border-radius: 5px;
         }
 
         .obstacle {
-            width: 20px;
+            width: 30px;
             height: 40px;
             background-color: #ff6b6b;
             position: absolute;
-            right: 0;
             bottom: 0;
-            animation: move 2s linear infinite;
+            right: 0;
+            animation: moveObstacle 2s linear infinite;
         }
 
-        @keyframes move {
+        @keyframes moveObstacle {
             from {
-                right: -20px;
+                right: -30px;
             }
             to {
                 right: 100%;
             }
+        }
+
+        @keyframes jump {
+            0%, 100% {
+                bottom: 0;
+            }
+            50% {
+                bottom: 100px;
+            }
+        }
+
+        .jump {
+            animation: jump 0.6s ease-out;
         }
     </style>
 </head>
@@ -89,41 +103,41 @@
         <a href="message.html" class="bubble">Message</a>
         <a href="promise.html" class="bubble">Promise</a>
         <a href="reasons.html" class="bubble">Reasons</a>
-        <a href="interactive-apology.html" class="bubble">Interactive Apology</a>
+        <a href="interactive-apology.html" class="bubble">Interactive</a>
     </div>
 
     <div id="game">
-        <div class="dino" id="dino"></div>
+        <div id="dino" class="dino"></div>
     </div>
 
     <script>
-        const dino = document.getElementById("dino");
+        const dino = document.getElementById('dino');
 
         function jump() {
-            if (dino.classList != "jump") {
-                dino.classList.add("jump");
-                setTimeout(function () {
-                    dino.classList.remove("jump");
-                }, 500);
+            if (!dino.classList.contains('jump')) {
+                dino.classList.add('jump');
+                setTimeout(() => {
+                    dino.classList.remove('jump');
+                }, 600);
             }
         }
 
-        document.addEventListener("keydown", function () {
-            jump();
-        });
+        document.addEventListener('keydown', jump);
 
         function createObstacle() {
-            const game = document.getElementById("game");
-            const obstacle = document.createElement("div");
-            obstacle.classList.add("obstacle");
+            const game = document.getElementById('game');
+            const obstacle = document.createElement('div');
+            obstacle.classList.add('obstacle');
             game.appendChild(obstacle);
-            setTimeout(() => game.removeChild(obstacle), 4000);
+
+            obstacle.addEventListener('animationend', () => {
+                game.removeChild(obstacle);
+            });
         }
 
         setInterval(createObstacle, 2000);
     </script>
 </body>
 </html>
-
 
 
