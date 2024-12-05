@@ -57,25 +57,8 @@
             font-size: 1.4em;
             margin: 10px 0;
             opacity: 0;
-            transition: opacity 0.5s ease-in-out;
             line-height: 1.8;
-            position: relative;
-        }
-
-        .message::before {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 100%;
-            background: #0077b6;
-            left: -5px;
-            top: 0;
-            animation: typing 0.5s steps(30, end) forwards;
-        }
-
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
+            transition: opacity 0.5s ease-in-out;
         }
     </style>
 </head>
@@ -102,15 +85,29 @@
                 const messageContainer = document.getElementById('message-container');
                 const newMessage = document.createElement('p');
                 newMessage.className = 'message';
-                newMessage.innerText = messages[step];
                 messageContainer.appendChild(newMessage);
 
-                setTimeout(() => {
-                    newMessage.style.opacity = 1;
-                }, 100); 
-
+                typeWriter(messages[step], newMessage);
                 step++;
             }
+        }
+
+        function typeWriter(text, element) {
+            let i = 0;
+            const speed = 50; // Typing speed in milliseconds
+
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                } else {
+                    element.style.opacity = 1; // Smooth fade-in after typing completes
+                }
+            }
+            element.innerHTML = ''; // Clear existing text
+            element.style.opacity = 0; // Reset opacity
+            type();
         }
     </script>
 </body>
