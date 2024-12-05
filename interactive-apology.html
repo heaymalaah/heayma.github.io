@@ -147,18 +147,22 @@
 
         function showFinalMessage() {
             const container = document.getElementById('message-container');
-            const finalMessage = document.createElement('p');
-            finalMessage.innerText = "That's all, Mads! You've reached the end. Thank you for listening. ❤️";
-            finalMessage.style.fontSize = "1.8em";
-            finalMessage.style.marginTop = "20px";
-            container.appendChild(finalMessage);
+            // Only show the final message once
+            if (!container.querySelector('.final-message')) {
+                const finalMessage = document.createElement('p');
+                finalMessage.innerText = "That's all, Mads! You've reached the end. Thank you for listening. ❤️";
+                finalMessage.className = 'final-message';
+                finalMessage.style.fontSize = "1.8em";
+                finalMessage.style.marginTop = "20px";
+                container.appendChild(finalMessage);
 
-            // Add the "Back to Main Page" button
-            const backButton = document.createElement('button');
-            backButton.innerText = "Back to Main Page";
-            backButton.className = 'button';
-            backButton.onclick = () => window.location.href = 'index.html'; // Change this to your main page URL
-            container.appendChild(backButton);
+                // Add the "Back to Main Page" button
+                const backButton = document.createElement('button');
+                backButton.innerText = "Back to Main Page";
+                backButton.className = 'button';
+                backButton.onclick = () => window.location.href = 'index.html'; // Change this to your main page URL
+                container.appendChild(backButton);
+            }
         }
     </script>
 </body>
