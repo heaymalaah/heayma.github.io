@@ -11,71 +11,52 @@
             background-color: #f5f5f5;
             text-align: center;
             padding: 50px;
-            position: relative;
-            height: 100vh;
-            overflow: hidden; /* Hide overflowing hearts */
         }
 
         h1 {
             color: #0066cc;
             font-size: 3em;
-            margin-bottom: 30px;
         }
 
         .bubble-container {
             display: flex;
             justify-content: center;
             gap: 20px;
-            margin-top: 50px;
+            margin: 50px 0;
         }
 
         .bubble {
-            padding: 15px 30px;
-            border-radius: 50%;
-            font-size: 1.5em;
-            text-decoration: none;
+            padding: 20px 40px;
+            background-color: #0066cc;
             color: white;
-            cursor: pointer;
-            opacity: 0.9;
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 1.2em;
+            display: inline-block;
+            transition: background-color 0.3s ease;
         }
 
-        .bubble:nth-child(1) { background-color: #ff7f7f; }
-        .bubble:nth-child(2) { background-color: #ffbb33; }
-        .bubble:nth-child(3) { background-color: #66cc66; }
-        .bubble:nth-child(4) { background-color: #3399ff; }
-        .bubble:nth-child(5) { background-color: #9966cc; }
+        .bubble:nth-child(2) { background-color: #ff6b6b; }
+        .bubble:nth-child(3) { background-color: #6bc1ff; }
+        .bubble:nth-child(4) { background-color: #ffcc6b; }
+        .bubble:nth-child(5) { background-color: #8bc34a; }
 
-        /* Falling Hearts */
-        .heart {
-            position: absolute;
-            top: -100px;
-            width: 40px;
-            height: 40px;
-            background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Red_heart_icon.svg/1024px-Red_heart_icon.svg.png') no-repeat center center;
-            background-size: contain;
-            animation: fall 6s infinite ease-in-out, floatSide 4s infinite ease-in-out;
+        .bubble:hover {
+            background-color: #004b99;
         }
 
-        @keyframes fall {
-            0% { transform: translateY(0); opacity: 1; }
-            100% { transform: translateY(100vh); opacity: 0; }
+        #dino-game-container {
+            margin-top: 50px;
         }
 
-        @keyframes floatSide {
-            0%, 100% { transform: translateX(-20px); }
-            50% { transform: translateX(20px); }
+        #dino-game-container h2 {
+            color: #333;
+            margin-bottom: 20px;
         }
-
-        .heart:nth-child(6) { left: 10%; animation-delay: 0s; }
-        .heart:nth-child(7) { left: 30%; animation-delay: 2s; }
-        .heart:nth-child(8) { left: 50%; animation-delay: 4s; }
-        .heart:nth-child(9) { left: 70%; animation-delay: 1s; }
-        .heart:nth-child(10) { left: 90%; animation-delay: 3s; }
     </style>
 </head>
 <body>
     <h1>I'm Sorry, Mads</h1>
-    <p>I know we've had our rough moments, but I want to make things right. Here are some pages that express my feelings and apologies:</p>
 
     <div class="bubble-container">
         <a href="future.html" class="bubble">Future</a>
@@ -85,12 +66,17 @@
         <a href="interactive-apology.html" class="bubble">Interactive Apology</a>
     </div>
 
-    <!-- Animated Hearts -->
-    <div class="heart"></div>
-    <div class="heart"></div>
-    <div class="heart"></div>
-    <div class="heart"></div>
-    <div class="heart"></div>
+    <div id="dino-game-container">
+        <h2>Have Fun While I Say Sorry</h2>
+        <div id="offline-resources">
+            <div class="runner-container">
+                <div class="runner-canvas"></div>
+            </div>
+        </div>
+        <script src="https://chromedino.com/assets/offline.js"></script>
+    </div>
+
 </body>
 </html>
+
 
