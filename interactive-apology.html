@@ -4,101 +4,99 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive Apology</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600&display=swap">
     <style>
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f0f8ff;
-            overflow: hidden;
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(120deg, #e0c3fc, #8ec5fc);
+            animation: gradientBG 10s ease infinite;
+            color: #333;
             text-align: center;
             padding: 50px;
-            color: #333;
-            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes gradientBG {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
 
         h2 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            font-weight: 600;
-            color: #444;
+            font-size: 2.8em;
+            color: #4a4a4a;
+            margin-bottom: 15px;
         }
 
         p {
-            font-size: 1.1em;
-            color: #666;
+            font-size: 1.3em;
+            color: #555;
         }
 
         .button {
             background-color: #0077b6;
             color: white;
-            padding: 15px 30px;
+            padding: 15px 35px;
             border: none;
             border-radius: 25px;
-            cursor: pointer;
             font-size: 1.2em;
-            font-weight: 600;
+            font-weight: bold;
+            cursor: pointer;
             transition: all 0.3s ease;
             margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .button:hover {
             background-color: #005f8d;
+            transform: scale(1.05);
         }
 
         .message-container {
-            margin: 30px auto;
+            margin: 20px auto;
             width: 60%;
-            text-align: left;
             padding: 20px;
             background: rgba(255, 255, 255, 0.8);
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
         }
 
         .message {
-            font-size: 1.4em;
+            font-size: 1.5em;
             margin: 10px 0;
             opacity: 0;
             line-height: 1.8;
-            transition: opacity 0.5s ease-in-out, transform 0.5s;
-            transform: translateX(-20px);
         }
 
         .bubble {
             position: absolute;
             width: 60px;
             height: 60px;
-            background: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.3);
             border-radius: 50%;
-            animation: float 10s infinite ease-in-out;
+            animation: float 8s infinite ease-in-out;
         }
 
         @keyframes float {
-            0% {
-                transform: translateY(0) scale(1);
-            }
-            50% {
-                transform: translateY(-300px) scale(1.2);
-            }
-            100% {
-                transform: translateY(0) scale(1);
-            }
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-100px); }
+            100% { transform: translateY(0); }
         }
     </style>
 </head>
 <body>
     <h2>Click Through My Apology</h2>
-    <p>Each click reveals a new message to express how much you mean to me. I hope you'll understand how deeply sorry I am.</p>
+    <p>Each click reveals a message to express how deeply sorry I am.</p>
     <button class="button" onclick="nextMessage()">Click Me</button>
 
     <div class="message-container" id="message-container"></div>
 
     <!-- Floating Bubbles -->
-    <div class="bubble" style="left: 10%; top: 80%;"></div>
-    <div class="bubble" style="left: 25%; top: 60%;"></div>
-    <div class="bubble" style="left: 40%; top: 90%;"></div>
-    <div class="bubble" style="left: 70%; top: 50%;"></div>
-    <div class="bubble" style="left: 85%; top: 70%;"></div>
+    <div class="bubble" style="left: 10%; top: 90%;"></div>
+    <div class="bubble" style="left: 30%; top: 80%;"></div>
+    <div class="bubble" style="left: 60%; top: 90%;"></div>
+    <div class="bubble" style="left: 80%; top: 75%;"></div>
 
     <audio id="typeSound" src="https://assets.mixkit.co/sfx/preview/mixkit-retro-typewriter-click-1592.mp3"></audio>
     <audio id="dingSound" src="https://assets.mixkit.co/sfx/preview/mixkit-unlock-new-item-2563.mp3"></audio>
@@ -107,28 +105,26 @@
         let step = 0;
         const messages = [
             "Mads, I'm so sorry for the hurt I've caused.",
-            "I know I made mistakes and I regret them.",
-            "You're the most important person in my life, and I want to make things right.",
-            "I promise to learn from this and do better in the future.",
-            "I’m trying my best to be better for you, for me, and for us.",
-            "Thank you for understanding, Dino. I love you so much!"
+            "I know I made mistakes and I regret them deeply.",
+            "You are the most important person in my life.",
+            "I promise to learn from this and be better.",
+            "Thank you for your patience, Dino. I love you."
         ];
 
         function nextMessage() {
             if (step < messages.length) {
-                const messageContainer = document.getElementById('message-container');
-                const newMessage = document.createElement('p');
-                newMessage.className = 'message';
-                messageContainer.appendChild(newMessage);
-
-                typeWriter(messages[step], newMessage);
+                const container = document.getElementById('message-container');
+                const messageElem = document.createElement('p');
+                messageElem.className = 'message';
+                container.appendChild(messageElem);
+                typeWriter(messages[step], messageElem);
                 step++;
             }
         }
 
         function typeWriter(text, element) {
             let i = 0;
-            const speed = 30; // Adjust typing speed
+            const speed = 50; // Typing speed
             const typeSound = document.getElementById('typeSound');
             const dingSound = document.getElementById('dingSound');
 
@@ -141,11 +137,9 @@
                     setTimeout(type, speed);
                 } else {
                     element.style.opacity = 1;
-                    element.style.transform = "translateX(0)";
                     dingSound.play();
                 }
             }
-            element.innerHTML = ''; 
             type();
         }
     </script>
