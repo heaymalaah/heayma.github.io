@@ -8,10 +8,12 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(120deg, #f9f9f9, #e0e0e0);
+            background-color: #f0f8ff;
+            overflow: hidden;
             text-align: center;
             padding: 50px;
             color: #333;
+            position: relative;
         }
 
         h2 {
@@ -51,6 +53,7 @@
             background: rgba(255, 255, 255, 0.8);
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
         }
 
         .message {
@@ -58,7 +61,37 @@
             margin: 10px 0;
             opacity: 0;
             line-height: 1.8;
-            transition: opacity 0.5s ease-in-out;
+            transition: opacity 0.5s ease-in-out, transform 0.5s;
+            transform: translateX(-20px);
+        }
+
+        .bubble {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: float 10s infinite ease-in-out;
+        }
+
+        .bubble:nth-child(odd) {
+            animation-duration: 12s;
+        }
+
+        .bubble:nth-child(even) {
+            animation-duration: 15s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) scale(1);
+            }
+            50% {
+                transform: translateY(-300px) scale(1.2);
+            }
+            100% {
+                transform: translateY(0) scale(1);
+            }
         }
     </style>
 </head>
@@ -68,6 +101,13 @@
     <button class="button" onclick="nextMessage()">Click Me</button>
 
     <div class="message-container" id="message-container"></div>
+
+    <!-- Floating Bubbles -->
+    <div class="bubble" style="left: 10%; top: 80%;"></div>
+    <div class="bubble" style="left: 25%; top: 60%;"></div>
+    <div class="bubble" style="left: 40%; top: 90%;"></div>
+    <div class="bubble" style="left: 70%; top: 50%;"></div>
+    <div class="bubble" style="left: 85%; top: 70%;"></div>
 
     <script>
         let step = 0;
@@ -94,7 +134,7 @@
 
         function typeWriter(text, element) {
             let i = 0;
-            const speed = 50; // Typing speed in milliseconds
+            const speed = 35; // Typing speed in milliseconds (adjusted for faster typing)
 
             function type() {
                 if (i < text.length) {
@@ -103,10 +143,10 @@
                     setTimeout(type, speed);
                 } else {
                     element.style.opacity = 1; // Smooth fade-in after typing completes
+                    element.style.transform = "translateX(0)"; // Slide in effect
                 }
             }
             element.innerHTML = ''; // Clear existing text
-            element.style.opacity = 0; // Reset opacity
             type();
         }
     </script>
