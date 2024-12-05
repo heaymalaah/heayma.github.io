@@ -53,7 +53,6 @@
             background: rgba(255, 255, 255, 0.8);
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            position: relative;
         }
 
         .message {
@@ -72,14 +71,6 @@
             background: rgba(255, 255, 255, 0.5);
             border-radius: 50%;
             animation: float 10s infinite ease-in-out;
-        }
-
-        .bubble:nth-child(odd) {
-            animation-duration: 12s;
-        }
-
-        .bubble:nth-child(even) {
-            animation-duration: 15s;
         }
 
         @keyframes float {
@@ -109,6 +100,9 @@
     <div class="bubble" style="left: 70%; top: 50%;"></div>
     <div class="bubble" style="left: 85%; top: 70%;"></div>
 
+    <audio id="typeSound" src="https://assets.mixkit.co/sfx/preview/mixkit-retro-typewriter-click-1592.mp3"></audio>
+    <audio id="dingSound" src="https://assets.mixkit.co/sfx/preview/mixkit-unlock-new-item-2563.mp3"></audio>
+
     <script>
         let step = 0;
         const messages = [
@@ -134,19 +128,24 @@
 
         function typeWriter(text, element) {
             let i = 0;
-            const speed = 35; // Typing speed in milliseconds (adjusted for faster typing)
+            const speed = 30; // Adjust typing speed
+            const typeSound = document.getElementById('typeSound');
+            const dingSound = document.getElementById('dingSound');
 
             function type() {
                 if (i < text.length) {
                     element.innerHTML += text.charAt(i);
+                    typeSound.currentTime = 0;
+                    typeSound.play();
                     i++;
                     setTimeout(type, speed);
                 } else {
-                    element.style.opacity = 1; // Smooth fade-in after typing completes
-                    element.style.transform = "translateX(0)"; // Slide in effect
+                    element.style.opacity = 1;
+                    element.style.transform = "translateX(0)";
+                    dingSound.play();
                 }
             }
-            element.innerHTML = ''; // Clear existing text
+            element.innerHTML = ''; 
             type();
         }
     </script>
