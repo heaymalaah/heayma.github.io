@@ -18,11 +18,6 @@
             font-size: 3em;
         }
 
-        p {
-            font-size: 1.2em;
-            margin: 20px 0;
-        }
-
         .bubble-container {
             display: flex;
             justify-content: center;
@@ -48,67 +43,30 @@
             background-color: #004b99;
         }
 
-        #game {
-            position: relative;
-            width: 600px;
-            height: 200px;
-            background-color: #e0e0e0;
-            margin: 50px auto;
-            border: 2px solid #000;
-        }
-
-        .dino {
-            width: 40px;
-            height: 40px;
-            position: absolute;
-            bottom: 0;
-            left: 50px;
-            background: url('https://i.imgur.com/5K7ZTSl.png') no-repeat center;
-            background-size: contain;
-        }
-
-        .obstacle {
-            width: 30px;
-            height: 40px;
-            background-color: #ff6b6b;
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            animation: moveObstacle 2s linear infinite;
-        }
-
-        @keyframes moveObstacle {
-            from {
-                right: -30px;
-            }
-            to {
-                right: 100%;
-            }
-        }
-
-        @keyframes jump {
-            0%, 100% {
-                bottom: 0;
-            }
-            50% {
-                bottom: 100px;
-            }
-        }
-
-        .jump {
-            animation: jump 0.6s ease-out;
-        }
-
-        #score {
+        .game-link {
+            margin-top: 30px;
             font-size: 1.5em;
-            color: #333;
-            margin-top: 20px;
+            text-decoration: none;
+            color: #ff6b6b;
+            padding: 10px 20px;
+            border: 2px solid #ff6b6b;
+            border-radius: 8px;
+        }
+
+        .game-link:hover {
+            background-color: #ff6b6b;
+            color: white;
+        }
+
+        p#fun-text {
+            font-size: 1.2em;
+            margin-top: 30px;
+            color: #555;
         }
     </style>
 </head>
 <body>
     <h1>I'm Sorry, Mads</h1>
-    <p>Have fun while I say sorry ❤️</p>
 
     <div class="bubble-container">
         <a href="future.html" class="bubble">Future</a>
@@ -118,61 +76,12 @@
         <a href="interactive-apology.html" class="bubble">Interactive</a>
     </div>
 
-    <div id="game">
-        <div id="dino" class="dino"></div>
-    </div>
-
-    <div id="score">Score: 0</div>
-
-    <script>
-        const dino = document.getElementById('dino');
-        const scoreDisplay = document.getElementById('score');
-        let score = 0;
-        let isJumping = false;
-
-        function jump() {
-            if (!isJumping) {
-                isJumping = true;
-                dino.classList.add('jump');
-                setTimeout(() => {
-                    dino.classList.remove('jump');
-                    isJumping = false;
-                }, 600);
-            }
-        }
-
-        document.addEventListener('keydown', jump);
-
-        function createObstacle() {
-            const game = document.getElementById('game');
-            const obstacle = document.createElement('div');
-            obstacle.classList.add('obstacle');
-            game.appendChild(obstacle);
-
-            let obstacleInterval = setInterval(() => {
-                const dinoBottom = parseInt(window.getComputedStyle(dino).getPropertyValue('bottom'));
-                const obstacleLeft = parseInt(window.getComputedStyle(obstacle).getPropertyValue('left'));
-
-                if (obstacleLeft < 80 && obstacleLeft > 40 && dinoBottom <= 40) {
-                    alert('Oops! Game Over. Your final score: ' + score);
-                    clearInterval(obstacleInterval);
-                    game.innerHTML = `<div id="dino" class="dino"></div>`;
-                    score = 0;
-                    scoreDisplay.innerText = 'Score: ' + score;
-                }
-            }, 10);
-
-            obstacle.addEventListener('animationend', () => {
-                game.removeChild(obstacle);
-                score++;
-                scoreDisplay.innerText = 'Score: ' + score;
-            });
-        }
-
-        setInterval(createObstacle, 2000);
-    </script>
+    <p id="fun-text">Have fun while I say sorry ❤️</p>
+    
+    <a href="https://dinorunner.com" class="game-link" target="_blank">Play the Dino Game</a>
 </body>
 </html>
+
 
 
 
