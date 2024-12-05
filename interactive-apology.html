@@ -8,7 +8,7 @@
     <style>
         body {
             font-family: 'Roboto', sans-serif;
-            background: linear-gradient(120deg, #f6d365, #fda085);
+            background: linear-gradient(120deg, #a8edea, #fed6e3);
             background-size: 400% 400%;
             animation: gradientBG 10s ease infinite;
             text-align: center;
@@ -34,7 +34,7 @@
 
         .button {
             background-color: #ffffff;
-            color: #0066cc;
+            color: #0077b6;
             padding: 15px 30px;
             border: none;
             border-radius: 25px;
@@ -45,7 +45,7 @@
         }
 
         .button:hover {
-            background-color: #004b99;
+            background-color: #0077b6;
             color: white;
             box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
         }
@@ -76,22 +76,24 @@
             "I know I made mistakes and I regret them.",
             "You're the most important person in my life and I want to make things right.",
             "I promise to learn from this and do better in the future.",
-            "I’m trying my best to be better, for you, for me and for us."
+            "I’m trying my best to be better, for you, for me, and for us.",
+            "Thank you for understanding, Dino. I love you so much!"
         ];
 
         function nextMessage() {
+            const messageElement = document.getElementById('message');
             if (step < messages.length) {
-                const messageElement = document.getElementById('message');
                 messageElement.style.opacity = 0;
                 setTimeout(() => {
                     messageElement.innerText = messages[step];
                     messageElement.style.opacity = 1;
+                    step++;
                 }, 500);
-                step++;
             } else {
-                document.getElementById('message').innerText = "Thank you for understanding, Dino. I love you so much!";
+                step = 0; // Reset if you want it to loop or disable button if not.
             }
         }
     </script>
 </body>
 </html>
+
