@@ -43,25 +43,18 @@
             background-color: #004b99;
         }
 
-        .game-link {
-            margin-top: 30px;
-            font-size: 1.5em;
-            text-decoration: none;
-            color: #ff6b6b;
-            padding: 10px 20px;
-            border: 2px solid #ff6b6b;
-            border-radius: 8px;
-        }
-
-        .game-link:hover {
-            background-color: #ff6b6b;
-            color: white;
-        }
-
         p#fun-text {
             font-size: 1.2em;
             margin-top: 30px;
             color: #555;
+        }
+
+        iframe {
+            width: 100%;
+            max-width: 700px;
+            height: 400px;
+            border: none;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -78,9 +71,11 @@
 
     <p id="fun-text">Have fun while I say sorry ❤️</p>
     
-    <a href="https://dinorunner.com" class="game-link" target="_blank">Play the Dino Game</a>
+    <!-- Embedded Dino Runner Game -->
+    <iframe src="https://dinorunner.com"></iframe>
 </body>
 </html>
+
 
 
 
