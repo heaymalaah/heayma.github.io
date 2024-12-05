@@ -95,11 +95,15 @@
     <script src="js/objects/score.js"></script>
     <script src="js/game.js"></script>
     <script>
-        new Game({
-            el: document.getElementById("game")
+        document.addEventListener("DOMContentLoaded", function () {
+            var gameCanvas = document.getElementById("game");
+            new Game({
+                el: gameCanvas
+            });
         });
     </script>
 
 </body>
 </html>
+
 
