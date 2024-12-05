@@ -8,30 +8,22 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(120deg, #f2f2f2, #e6e6e6);
-            background-size: 400% 400%;
-            animation: gradientBG 8s ease infinite;
+            background: linear-gradient(120deg, #f9f9f9, #e0e0e0);
             text-align: center;
             padding: 50px;
-            color: black;
-        }
-
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            color: #333;
         }
 
         h2 {
             font-size: 2.5em;
             margin-bottom: 20px;
             font-weight: 600;
-            color: #333;
+            color: #444;
         }
 
         p {
             font-size: 1.1em;
-            color: #555;
+            color: #666;
         }
 
         .button {
@@ -44,35 +36,46 @@
             font-size: 1.2em;
             font-weight: 600;
             transition: all 0.3s ease;
-            animation: bounce 2s infinite;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-5px);
-            }
+            margin-top: 20px;
         }
 
         .button:hover {
             background-color: #005f8d;
-            box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
         }
 
-        #message {
-            font-size: 1.6em;
+        .message-container {
             margin: 30px auto;
             width: 60%;
+            text-align: left;
             padding: 20px;
-            border-radius: 15px;
-            background: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .message {
+            font-size: 1.4em;
+            margin: 10px 0;
             opacity: 0;
-            transition: opacity 0.8s ease-in-out;
-            color: #333;
+            transition: opacity 0.5s ease-in-out;
+            line-height: 1.8;
+            position: relative;
+        }
+
+        .message::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 100%;
+            background: #0077b6;
+            left: -5px;
+            top: 0;
+            animation: typing 0.5s steps(30, end) forwards;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
         }
     </style>
 </head>
@@ -80,30 +83,33 @@
     <h2>Click Through My Apology</h2>
     <p>Each click reveals a new message to express how much you mean to me. I hope you'll understand how deeply sorry I am.</p>
     <button class="button" onclick="nextMessage()">Click Me</button>
-    <p id="message"></p>
+
+    <div class="message-container" id="message-container"></div>
 
     <script>
         let step = 0;
         const messages = [
             "Mads, I'm so sorry for the hurt I've caused.",
             "I know I made mistakes and I regret them.",
-            "You're the most important person in my life and I want to make things right.",
+            "You're the most important person in my life, and I want to make things right.",
             "I promise to learn from this and do better in the future.",
-            "I’m trying my best to be better, for you, for me, and for us.",
+            "I’m trying my best to be better for you, for me, and for us.",
             "Thank you for understanding, Dino. I love you so much!"
         ];
 
         function nextMessage() {
-            const messageElement = document.getElementById('message');
             if (step < messages.length) {
-                messageElement.style.opacity = 0;
+                const messageContainer = document.getElementById('message-container');
+                const newMessage = document.createElement('p');
+                newMessage.className = 'message';
+                newMessage.innerText = messages[step];
+                messageContainer.appendChild(newMessage);
+
                 setTimeout(() => {
-                    messageElement.innerText = messages[step];
-                    messageElement.style.opacity = 1;
-                    step++;
-                }, 500);
-            } else {
-                step = 0; // Reset to loop messages or remove this line if no reset needed.
+                    newMessage.style.opacity = 1;
+                }, 100); 
+
+                step++;
             }
         }
     </script>
