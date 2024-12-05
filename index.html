@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apology to Mads</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="styles.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -32,8 +32,6 @@
             border-radius: 50%;
             text-decoration: none;
             font-size: 1.2em;
-            display: inline-block;
-            transition: background-color 0.3s ease;
         }
 
         .bubble:nth-child(2) { background-color: #ff6b6b; }
@@ -45,13 +43,41 @@
             background-color: #004b99;
         }
 
-        #dino-game-container {
-            margin-top: 50px;
+        #game {
+            margin: 50px auto;
+            width: 600px;
+            height: 150px;
+            background-color: #eee;
+            position: relative;
+            overflow: hidden;
         }
 
-        canvas {
-            display: block;
-            margin: 0 auto;
+        .dino {
+            width: 50px;
+            height: 50px;
+            background-color: #0066cc;
+            position: absolute;
+            bottom: 0;
+            left: 50px;
+        }
+
+        .obstacle {
+            width: 20px;
+            height: 40px;
+            background-color: #ff6b6b;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            animation: move 2s linear infinite;
+        }
+
+        @keyframes move {
+            from {
+                right: -20px;
+            }
+            to {
+                right: 100%;
+            }
         }
     </style>
 </head>
@@ -66,9 +92,38 @@
         <a href="interactive-apology.html" class="bubble">Interactive Apology</a>
     </div>
 
-    <div id="dino-game-container">
-        <h2>Have Fun While I Say Sorry</h2>
-        <script src
+    <div id="game">
+        <div class="dino" id="dino"></div>
+    </div>
+
+    <script>
+        const dino = document.getElementById("dino");
+
+        function jump() {
+            if (dino.classList != "jump") {
+                dino.classList.add("jump");
+                setTimeout(function () {
+                    dino.classList.remove("jump");
+                }, 500);
+            }
+        }
+
+        document.addEventListener("keydown", function () {
+            jump();
+        });
+
+        function createObstacle() {
+            const game = document.getElementById("game");
+            const obstacle = document.createElement("div");
+            obstacle.classList.add("obstacle");
+            game.appendChild(obstacle);
+            setTimeout(() => game.removeChild(obstacle), 4000);
+        }
+
+        setInterval(createObstacle, 2000);
+    </script>
+</body>
+</html>
 
 
 
