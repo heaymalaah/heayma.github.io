@@ -67,56 +67,43 @@
             transform: translateY(-5px);
         }
 
-        /* New Section: Animated Hearts */
+        /* Falling Hearts Section */
         .heart {
             position: absolute;
             top: -50px;
-            font-size: 30px;
-            color: #ff4d4d;
-            animation: fall 5s infinite ease-in;
+            width: 40px;
+            height: 40px;
+            background: url('https://cdn-icons-png.flaticon.com/512/833/833472.png') no-repeat center center;
+            background-size: cover;
+            animation: fall 6s infinite ease-in-out, floatSide 4s infinite ease-in-out;
+            opacity: 0.8;
         }
 
-        /* Animation to make hearts fall */
         @keyframes fall {
             0% {
-                transform: translateX(0) translateY(0);
+                transform: translateY(0);
                 opacity: 1;
             }
-            50% {
-                opacity: 0.6;
-            }
             100% {
-                transform: translateX(200px) translateY(100vh);
+                transform: translateY(100vh);
                 opacity: 0;
             }
         }
 
-        /* Add variety to heart positions and timing */
-        .heart:nth-child(1) {
-            left: 20%;
-            animation-duration: 6s;
-            animation-delay: 0s;
+        @keyframes floatSide {
+            0%, 100% {
+                transform: translateX(-20px);
+            }
+            50% {
+                transform: translateX(20px);
+            }
         }
-        .heart:nth-child(2) {
-            left: 50%;
-            animation-duration: 7s;
-            animation-delay: 1s;
-        }
-        .heart:nth-child(3) {
-            left: 80%;
-            animation-duration: 5s;
-            animation-delay: 2s;
-        }
-        .heart:nth-child(4) {
-            left: 10%;
-            animation-duration: 6s;
-            animation-delay: 3s;
-        }
-        .heart:nth-child(5) {
-            left: 70%;
-            animation-duration: 8s;
-            animation-delay: 4s;
-        }
+
+        .heart:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .heart:nth-child(2) { left: 30%; animation-delay: 1s; }
+        .heart:nth-child(3) { left: 50%; animation-delay: 2s; }
+        .heart:nth-child(4) { left: 70%; animation-delay: 3s; }
+        .heart:nth-child(5) { left: 90%; animation-delay: 4s; }
     </style>
 </head>
 <body>
@@ -132,11 +119,11 @@
     </div>
 
     <!-- Animated Hearts -->
-    <div class="heart">❤️</div>
-    <div class="heart">❤️</div>
-    <div class="heart">❤️</div>
-    <div class="heart">❤️</div>
-    <div class="heart">❤️</div>
-
+    <div class="heart"></div>
+    <div class="heart"></div>
+    <div class="heart"></div>
+    <div class="heart"></div>
+    <div class="heart"></div>
 </body>
 </html>
+
