@@ -43,19 +43,12 @@
             background-color: #004b99;
         }
 
-        /* Dino Game Styling */
-        .game-container {
+        iframe {
+            width: 100%;
+            max-width: 700px;
+            height: 400px;
+            border: none;
             margin-top: 30px;
-            position: relative;
-            display: flex;
-            justify-content: center;
-            flex-direction: column;
-        }
-
-        canvas {
-            background-color: white;
-            display: block;
-            margin: 0 auto;
         }
 
         .fun-text {
@@ -76,34 +69,14 @@
         <a href="interactive-apology.html" class="bubble">Interactive</a>
     </div>
 
-    <!-- Dino Game - Embed the game here -->
-    <div class="game-container">
-        <canvas id="game" width="800" height="200"></canvas>
-        <p class="controls">Press space bar to start</p>
-    </div>
+    <!-- Embedded Dino Runner Game -->
+    <iframe src="https://dinorunner.com" title="Dino Game"></iframe>
 
+    <!-- Fun Text Below Game -->
     <div class="fun-text">
         Have fun while I say sorry! ❤️
     </div>
 
-    <!-- Dino Game Source Code -->
-    <script src="js/helpers.js"></script>
-    <script src="js/objects/game-object.js"></script>
-    <script src="js/objects/cactus.js"></script>
-    <script src="js/objects/dinosaur.js"></script>
-    <script src="js/objects/background.js"></script>
-    <script src="js/objects/score.js"></script>
-    <script src="js/game.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            var gameCanvas = document.getElementById("game");
-            new Game({
-                el: gameCanvas
-            });
-        });
-    </script>
-
 </body>
 </html>
-
 
