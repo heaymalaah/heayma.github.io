@@ -119,6 +119,8 @@
                 container.appendChild(messageElem);
                 typeWriter(messages[step], messageElem);
                 step++;
+            } else if (step === messages.length) {
+                showFinalMessage();
             }
         }
 
@@ -142,8 +144,24 @@
             }
             type();
         }
+
+        function showFinalMessage() {
+            const container = document.getElementById('message-container');
+            const finalMessage = document.createElement('p');
+            finalMessage.innerText = "That's all, Mads! You've reached the end. Thank you for listening. ❤️";
+            finalMessage.style.fontSize = "1.8em";
+            finalMessage.style.marginTop = "20px";
+            container.appendChild(finalMessage);
+
+            const backButton = document.createElement('button');
+            backButton.innerText = "Back to Main Page";
+            backButton.className = 'button';
+            backButton.onclick = () => window.location.href = 'index.html'; // Change this to your main page URL
+            container.appendChild(backButton);
+        }
     </script>
 </body>
 </html>
+
 
 
