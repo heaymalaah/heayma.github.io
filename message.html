@@ -3,16 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Message Wall</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Message to Mads</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        /* Global styles */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #f0f4f7, #c9d6e3);
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        h1, h2 {
+            font-family: 'Pacifico', cursive;
+            color: #333;
+        }
+
+        /* Container for the message */
+        .content {
+            width: 80%;
+            max-width: 900px;
+            margin: 50px auto;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            position: relative;
+        }
+
+        /* Styling the message text */
+        .message-text {
+            font-size: 1.2em;
+            color: #444;
+            margin-bottom: 20px;
+        }
+
+        .message-text strong {
+            color: #0077b6;
+        }
+
+        .message-signature {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #0077b6;
+            text-align: right;
+            margin-top: 30px;
+        }
+
+        .heart {
+            color: #ff6f61;
+        }
+
+        .scroll-to-read {
+            font-size: 1.1em;
+            color: #888;
+            margin-top: 40px;
+            font-style: italic;
+        }
+
+        /* Button to go back */
+        .back-btn {
+            font-size: 1.2em;
+            padding: 15px 25px;
+            background-color: #0077b6;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 40px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background-color: #005f8d;
+            transform: scale(1.05);
+        }
+
+        /* Heart animation */
+        .heart-animation {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 2em;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+    </style>
 </head>
 <body>
+
     <div class="content">
-        <h2>Message to Mads</h2>
-        <p>Hey Mads, I just want you to know that you're always on my mind. No matter where life takes us, I'm here for you.</p>
-        <p>We've been through a lot, but I know we can get through anything as long as we're together. I’m sorry for my mistakes, and I promise to be better for us.</p>
-        <p>Thank you for always being patient with me. You mean more than words can say.</p>
-        <p>With love, <strong>Heayma</strong></p>
+        <h1>Message to Mads 💌</h1>
+
+        <p class="message-text">
+            <strong>My dearest baby boy,</strong><br><br>
+
+            I’ve been thinking a lot about everything—about us, our time together, and how much you mean to me. I know I’ve made mistakes and hurt you, and for that, I am truly sorry. I can’t take back the pain I caused, but what I can do is show you that I’m committed to growing, learning, and being better for us. I know there have been moments where I haven’t been the best version of myself, but I want you to know how much I value you. You are my safe place, my constant, and I’m grateful for every moment we’ve shared. It’s been hard lately, but I want you to know I’ll keep trying, for both of us. I love you with all my heart, and I’m here to make things better.
+        </p>
+
+        <p class="message-text">
+            I know that space has been a big part of our relationship lately, and I want you to know that I understand why. I’ve learned to respect your need for space and time for yourself. If ever you need distance or time to think, I will give it to you without hesitation. And if you’re not ready to meet or if you want to go out with friends, I’ll respect that too. What matters most to me is that you feel comfortable, and that you know I’ll always be here when you’re ready. Space doesn’t mean we’re drifting apart; it just means we’re taking the time we need to grow individually so that we can come together even stronger.
+        </p>
+
+        <p class="message-text">
+            I’m not asking for perfection. I don’t expect us to be completely “fixed” right away, but what I do expect is that we continue trying. I want to build a relationship with you where we can face challenges together, where we communicate honestly, where we support each other even in the toughest times, and where love always remains at the center of it all. You’ve shown me so much love in your own way, and now it’s my turn to show you mine. I want to thank you, Mads, for everything. For your patience, your understanding, your love. Even when I’ve felt lost or unsure, you’ve been there to reassure me. Even when things were tough, you didn’t give up on me. And for that, I am forever grateful. I promise to keep trying. To keep growing. To keep learning. Because you deserve the best version of me, and I’ll work every day to be that for you.
+        </p>
+
+        <p class="message-text">
+            No matter what, I want you to know that I’m here. I’m not going anywhere. And as we move forward, I hope we can keep reminding each other that love, no matter how difficult the journey, is worth the effort. I just want to be with you, to support you, and to love you in every way I can. Let’s take things one step at a time. I’m here. I’m not going anywhere. I love you, and that’s what matters the most.
+        </p>
+
+        <p class="message-signature">
+            Yours always, <br>
+            Heayma 🦕
+        </p>
+
+        <p class="scroll-to-read">Keep scrolling down... <br> ❤️</p>
+
+        <button class="back-btn" onclick="window.location.href='index.html'">Back to Main Page</button>
     </div>
+
+    <!-- Heart Animation -->
+    <div class="heart-animation">❤️</div>
+
 </body>
 </html>
